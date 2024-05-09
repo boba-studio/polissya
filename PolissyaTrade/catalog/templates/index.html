@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Головна сторінка</h1>
+
+    <p>Ласкаво просимо до <em>Polissya trade</em>.
+        Це - дуже крутий веб-сайт!</p>
+
+<h2>Динамічний контент</h2>
+
+    <p>База даних сайту Polissya trade має наступну кількість записів:</p>
+    <ul>
+        <li><strong>Кількість співробітників:</strong> {{ num_employees }}</li>
+        <li><strong>Кількість співробітників:</strong> {{ num_persons }}</li>
+        <li><strong>Кількість в замовленні:</strong> {{ num_persons_available }}</li>
+        <li><strong>Кількість співробітників:</strong> {{ num_authors }}</li>
+    </ul>
+<p>Кількість ваших відвідувань: {{ num_visits }}</p>
+{% endblock %}

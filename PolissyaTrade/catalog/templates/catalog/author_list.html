@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Найвизначніші дати:</h1>
+
+    {% if author_list %}
+        {% for author in author_list.all %}
+        <p>{{ author.first_name }} {{ author.last_name }},
+            <strong>Дата народження: </strong>{{ author.date_of_birth }},
+            <strong>Приєднався до Polissya: </strong>{{ author.date_of_enrollment }}</p>
+        {% endfor %}
+    {% else %}
+        <p>У корпорації закінчились працівники!</p>
+    {% endif %}
+{% endblock %}

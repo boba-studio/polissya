@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h3>Список працівників в БД</h3>
+    <table>
+      <thead><th>IIN</th>
+      <th>----Ім'я----</th>
+      <th>Прізвище</th>
+      <th></th></thead>
+    {% if author %}
+      {% for author in author.all %}
+        <tr>
+          <td>{{ author.id }}</td>
+          <td>{{ author.first_name }}</td>
+          <td>{{ author.last_name }}</td>
+          <td><a href="/edit1/{{ author.id }}">Змінити</a>,
+            <a href="/delete/{{ author.id }}">Видалити</a></td>
+        </tr>
+      {% endfor %}
+    {% else %}
+      <p>В базі даних немає співробітників!</p>
+    {% endif %}
+    </table>
+
+<h3>Додати в базу данних співробітника</h3>
+<form method="POST" action="/create/">
+    {% csrf_token %}
+  <table>
+    {{ form }}
+  </table>
+  <input type="submit" value="Зберегти">
+</form>
+{% endblock %}

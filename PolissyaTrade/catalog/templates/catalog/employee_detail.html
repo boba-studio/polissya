@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Ім'я працівника: {{ employee.title }}</h1>
+
+    <p><strong>Здібності:</strong>
+        {% for ab in employee.abilities.all %}
+            <li>{{ ab }}</li>
+        {% endfor %}
+    <p><strong>Характеристика:</strong> {{ employee.summary }}</p>
+    <p><strong>Номер телефону:</strong> {{ employee.isbn }}</p>
+    <p><strong>Посада:</strong> {{ employee.position }}</p>
+    <p><strong>Працівник:</strong><a href=""> {{ employee.author.first_name }} {{ employee.author.last_name }}</a></p>
+
+    <div style="margine-left:20px;margine-top:20px">
+        <h4>Особисті дані працівника:</h4>
+        {% for copy in employee.person_set.all %}
+            <hr><p class="{% if copy.status == 1 %} text-success
+                    {% elif copy.status == 2 %} text-danger
+                    {% else %} text-warning
+                    {% endif %}"> {{ copy.get_status_display }}</p>
+            <p><strong>Паспорт:</strong> {{ copy.passport }}</p>
+            <p class="text-muted"><strong>Ідентифікаційний номер:</strong> {{copy.iin}}</p>
+            <p><strong>Сратус:</strong> {{ copy.status}}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+<p><strong>Працівник:</strong><a href="">{{ author.first_name }} {{ author.last_name }}</a></p>

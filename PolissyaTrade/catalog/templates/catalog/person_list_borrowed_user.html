@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Замовлені працівники</h1>
+
+  {% if person_list %}
+  <ul>
+    {% for pers in person_list %}
+    <li class="{% if pers.is_overdue %}
+              text-danger{% endif %}">
+      <a href="{% url 'person-detail' pers.enployee.pk %}">
+                  {{ pers.employee.title }}</a>
+            ({{ pers.due_back }})
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+    <p>Немає замовлених працівників!</p>
+  {% endif %}
+{% endblock %}

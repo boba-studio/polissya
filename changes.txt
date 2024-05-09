@@ -1,0 +1,6 @@
+Genre (жанр) = Abilities (здібності)
+Language (мова) = Position (посада)
+Book = Employee
+BookInstance = Person
+	inv_nom = iin
+	imprint = passport
